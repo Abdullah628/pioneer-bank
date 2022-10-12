@@ -24,15 +24,71 @@
         
     </div>
     <div id="transaction-area">
-        <h1>transaction area</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="deposit status">
+                    <h5>Deposit </h5>
+                    <h2>$<span id="currentDeposit">00</span></h2>
+                </div>
+            </div>
+            <div class="col-md-4 ">
+                <div class="withdraw status">
+                    <h5>Withdraw</h5>
+                    <h2>$ <span id="currentwithdraw">010</span></h2>
+                </div>
+                
+            </div>
+            <div class="col-md-4">
+                <div class="balance status">
+                    <h5>Balance</h5>
+                    <h2>$1240</h2>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="row2">
+            <div class="col-md-6">
+                <div class=" submit-area">
+                    <h4>Deposit</h4>
+                    <input id="depositAmount" type="text" class="form-control" placeholder="$ amount you want to deposit">
+                    <br>
+                    <button id="depositAdd" class="btn btn-success">Deposit</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class=" submit-area">
+                    <h4>Withdraw</h4>
+                    <input  class="form-control" type="text" placeholder="$ amount you want to withdraw">
+                    <br>
+                    <button class="btn btn-success">Withdraw</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
+
+        //Login button add event listener
         const loginBtn = document.getElementById("login");
         loginBtn.addEventListener('click',function(event){
             document.getElementById('login-area').style.display = 'none';
             document.getElementById('transaction-area').style.display = 'block';
         })
+
+        //deposit button add event listener
+        const depositBtn = document.getElementById('depositAdd');
+        depositBtn.addEventListener('click',function(){
+            const depositValue = document.getElementById('depositAmount').value;
+            const depositNumber = parseFloat(depositValue);
+
+            const currentDeposit = parseFloat(document.getElementById('currentDeposit').innerText);
+            const total = depositNumber+currentDeposit;
+            document.getElementById('currentDeposit').innerText = total;    
+            document.getElementById('depositAmount').value = '';       
+        })
+
+
     </script>
 </body>
 </html>
